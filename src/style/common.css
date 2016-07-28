@@ -16,14 +16,30 @@ img{
 }
 .box{
   width: 100vw;
-
+  position: relative;
   overflow: hidden;
 
 
 }
 ul{
   width:300%;
-  
+
   position: relative;
   transition:all 1s;
+}
+.arrow{
+  /*display: inline-block;
+  color: #fff;
+  position: absolute;
+  top:50%;
+  margin-top: -50%;
+  z-index: 100;
+  padding:20px;
+  height: 60px;*/
+}
+.left{
+
+}
+.right{
+
 }

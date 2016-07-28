@@ -7,27 +7,41 @@ class Slider extends React.Component{
   constructor(){
     super();
     this.state = {
-      index : 2
+      index : 0
     }
   }
   turn(){
-    if(this.state.index>0){
+    if(this.state.index<2){
       this.setState({
-        index: this.state.index - 1
+        index: this.state.index + 1
       })
     }else{
       this.setState({
-        index: 2
+        index: 0
       })
     }
 
-   console.log(this.state.index)
+
   }
   componentDidMount(){
      this.interval = setInterval(this.turn.bind(this),1000)
   }
   pausePlay(){
     clearInterval(this.interval);
+  }
+  scroll(option){
+    this.pausePlay()
+    let x = this.state.index + option;
+    if(x<0){
+      x=2
+      }
+    if(x>2){
+      x=0
+    }
+    this.setState({
+      index:x
+    })
+
   }
   render(){
     let styles = {
@@ -44,7 +58,14 @@ class Slider extends React.Component{
           <li><img src = {Img2} /></li>
           <li><img src = {Img3} /></li>
         </ul>
+        <div>
+          <span className='arrow left'
+          onClick={this.scroll.bind(this,-1)}>&lt;</span>
+          <span className='arrow right'
+          onClick={this.scroll.bind(this,1)}>&gt;</span>
+        </div>
       </div>
+
     )
   }
 }
